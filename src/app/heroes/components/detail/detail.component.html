@@ -1,0 +1,47 @@
+<div *ngIf="!heroe; else divHeroe" class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #divHeroe>
+
+    <div>
+        <h1>Detalle de héroe</h1>
+        <mat-divider></mat-divider>
+    </div>
+
+    <br>
+    <br>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="24px">
+
+        <div fxFlex="50">
+            <h1>
+                {{heroe.superhero}}
+                <br>
+                <small>{{heroe.alter_ego}}</small>
+            </h1>
+            <div>
+                <img [src]="heroe | img">
+            </div>
+        </div>
+
+        <div fxFlex="50">
+            <h1>{{heroe.publisher}}</h1>
+            <mat-divider></mat-divider>
+
+            <mat-list>
+                <mat-list-item>{{heroe.first_appearance}}</mat-list-item>
+                <mat-list-item>{{heroe.characters}}</mat-list-item>
+                <mat-list-item>{{heroe.alter_ego}}</mat-list-item>
+            </mat-list>
+
+            <div *ngIf="!childComponent">
+                <button mat-stroked-button (click)="back()">Volver</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</ng-template>

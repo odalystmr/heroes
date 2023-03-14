@@ -1,0 +1,65 @@
+<h1>
+    {{(heroe.id) ? 'Editar' : 'Nuevo' }} héroe
+    <small>{{heroe.superhero}}</small>
+</h1>
+
+<div fxLayout="row" fxLayoutGap="24px" fxLayout.xs="column">
+
+    <div fxFlex="50" fxLayout="column">
+
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="24px">
+
+            <mat-form-field fxFlex="100" fxLayout.xs="column">
+                <mat-label>Nombre del héroe</mat-label>
+                <input matInput type="text" [(ngModel)]="heroe.superhero" required>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100" fxLayout.xs="column">
+                <mat-label>Nombre real</mat-label>
+                <input matInput type="text" [(ngModel)]="heroe.alter_ego" required>
+            </mat-form-field>
+
+        </div>
+
+        <mat-form-field>
+            <mat-label>Primera aparición</mat-label>
+            <input matInput type="text" [(ngModel)]="heroe.first_appearance" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Personajes</mat-label>
+            <input matInput type="text" [(ngModel)]="heroe.characters" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Editorial</mat-label>
+            <mat-select [(ngModel)]="heroe.publisher" required>
+                <mat-option *ngFor="let publisher of publishers" [value]="publisher.id">
+                    {{publisher.id}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Foto (url)</mat-label>
+            <input matInput type="text" [(ngModel)]="heroe.alt_img">
+        </mat-form-field>
+
+        <div>
+            <button mat-stroked-button (click)="save()">
+                {{(heroe.id) ? 'Editar' : 'Añadir'}}
+            </button>
+            <button mat-stroked-button color="warn" (click)="delete()" *ngIf="heroe.id">
+                Eliminar
+            </button>
+        </div>
+
+    </div>
+
+    <div fxFlex="50" fxLayout="column">
+
+        <img [src]="heroe | img">
+
+    </div>
+
+</div>

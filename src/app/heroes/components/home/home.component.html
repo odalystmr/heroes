@@ -1,0 +1,57 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav>
+
+    <mat-toolbar color="primary" class="sidenav-toolbar" (click)="sidenav.toggle()">
+
+      <span class="spacer"></span>
+      <mat-icon>arrow_back_ios</mat-icon>
+
+    </mat-toolbar>
+
+    <mat-nav-list class="sidenav-nav-list">
+      <mat-list-item routerLink="/heroes/list" (click)="sidenav.toggle()">
+        <mat-icon>list</mat-icon>
+        Listado
+      </mat-list-item>
+      <mat-list-item routerLink="/heroes/new" (click)="sidenav.toggle()">
+        <mat-icon>add</mat-icon>
+        Nuevo
+      </mat-list-item>
+      <mat-list-item routerLink="/heroes/search" (click)="sidenav.toggle()">
+        <mat-icon>search</mat-icon>
+        Buscar
+      </mat-list-item>
+      <mat-list-item routerLink="/profile" (click)="sidenav.toggle()">
+        <mat-icon>home</mat-icon>
+        Profile
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="spacer"></span>
+      <div [style]="'margin-right:2%'">
+      ¡Bienvenido {{name}}!
+      </div>
+      <button mat-icon-button>
+        <mat-icon matTooltip="Cerrar sesión" (click)="logOut()">logout</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
